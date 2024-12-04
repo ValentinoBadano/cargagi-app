@@ -15,15 +15,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@android:drawable/sym_action_chat" />
+        tools:srcCompat="@drawable/ic_sync_success" />
 
     <TextView
         android:id="@+id/chofer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="2dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ellipsize="end"
@@ -33,12 +33,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/featured_image"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem" />
+        tools:text="Lorem Ipsum     10/12/2024" />
 
     <TextView
         android:id="@+id/descripcion"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
@@ -48,5 +49,5 @@
         app:layout_constraintStart_toStartOf="@+id/chofer"
         app:layout_constraintTop_toBottomOf="@+id/chofer"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="@tools:sample/lorem/random" />
+        tools:text="Efectivo. Monto: 1000000.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

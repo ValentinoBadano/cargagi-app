@@ -5,37 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+
+    <Button
         android:id="@+id/inputDate"
-        android:layout_width="wrap_content"
+        style="?spinnerStyle"
+        android:layout_width="360dp"
         android:layout_height="48dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:hint="Fecha"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="Fecha"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <AutoCompleteTextView-->
+<!--        android:id="@+id/autoCompleteChofer"-->
+<!--        android:layout_width="360dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/inputDate"-->
+<!--        android:hint="Seleccione un chofer" />-->
+
+
     <Spinner
         android:id="@+id/spinnerChofer"
-        android:layout_width="409dp"
+        android:layout_width="360dp"
         android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="20dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDate" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDate"
+        android:layout_marginTop="40dp"
+        />
 
     <Spinner
         android:id="@+id/spinnerEstacion"
-        android:layout_width="409dp"
+        android:layout_width="360dp"
         android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerChofer" />
@@ -44,15 +54,18 @@
         android:id="@+id/opciones_vale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinnerEstacion"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-   >
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerEstacion">
 
         <RadioButton
             android:id="@+id/radio_efectivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="?attr/colorPrimaryVariant"
             android:checked="true"
             android:text="Efectivo" />
 
@@ -60,6 +73,7 @@
             android:id="@+id/radio_combustible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="?attr/colorPrimaryVariant"
             android:checked="false"
             android:text="Combustible" />
     </RadioGroup>
@@ -69,11 +83,12 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
-        android:inputType="number"
-        android:hint="@string/valorNumerico"
+        android:inputType="number|numberDecimal"
+        android:hint="Monto"
         app:layout_constraintTop_toBottomOf="@id/opciones_vale"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
         />
 
     <Button

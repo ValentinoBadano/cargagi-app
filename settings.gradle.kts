@@ -8,6 +8,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        //jitpack
         gradlePluginPortal()
     }
 }
@@ -16,9 +17,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
 rootProject.name = "CargaGI"
 include(":app")
- 
+//include(":ics-openvpn")
