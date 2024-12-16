@@ -8,9 +8,13 @@ data class Estacion(
     val codigo: String,
     val nombre: String,
     val direccion: String,
-    val cuit: String
+    val cuit: String,
+    val telefono: String,
+    val email: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -24,6 +28,8 @@ data class Estacion(
         parcel.writeString(nombre)
         parcel.writeString(direccion)
         parcel.writeString(cuit)
+        parcel.writeString(telefono)
+        parcel.writeString(email)
     }
 
     override fun describeContents(): Int {

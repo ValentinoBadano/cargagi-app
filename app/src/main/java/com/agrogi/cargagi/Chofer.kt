@@ -6,13 +6,19 @@ import android.os.Parcelable
 data class Chofer(
     val id: String,
     val codigo: String,
+    val codigo_empresa: String,
     val nombre: String,
     val cuit: String,
     val empresa: String,
     val empresaCuit: String,
-    val patente: String
+    val patente: String,
+    val telefono: String,
+    val email: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -30,6 +36,8 @@ data class Chofer(
         parcel.writeString(empresa)
         parcel.writeString(empresaCuit)
         parcel.writeString(patente)
+        parcel.writeString(telefono)
+        parcel.writeString(email)
     }
 
     override fun describeContents(): Int {

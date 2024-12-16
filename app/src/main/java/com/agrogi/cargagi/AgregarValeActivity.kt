@@ -6,34 +6,28 @@ import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
-import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
+import androidx.core.content.FileProvider
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.time.LocalDate
-import android.net.Uri
-import android.os.Environment
-import android.widget.Toast
-import androidx.core.content.FileProvider
-import java.io.FileOutputStream
+
 
 class AgregarValeActivity : AppCompatActivity() {
 
@@ -60,8 +54,9 @@ class AgregarValeActivity : AppCompatActivity() {
         radioGroupTipo = findViewById(R.id.opciones_vale)
         editTextNumero = findViewById(R.id.editTextNumber)
 
-        choferes.add(Chofer("1", "1", "Chofer", "20345678901", "Empresa 1", "20345678901", "ABC123"))
-        estaciones.add(Estacion("1", "1", "Estación", "Calle 123", "20345678901"))
+
+        choferes.add(Chofer("1", "1", "1", "Chofer", "20345678901", "Empresa 1", "20345678901", "ABC123", "20345678901", "ejemplo@gmail.com"))
+        estaciones.add(Estacion("1", "1", "Estación", "Calle 123", "20345678901", "20345678901", "valentino@gmail.com"))
 
 
         loadChoferes()
@@ -117,10 +112,11 @@ class AgregarValeActivity : AppCompatActivity() {
         // get Estacion with name estacion
         val estacionObj = estaciones.find { it.nombre == estacion }
 
+        // crea el objeto Vale con los datos ingresados y muestra un diálogo de confirmación
         val nuevoVale = Vale(
             id = 0,
-            chofer = choferObj ?: Chofer("", "", "", "", "", "", ""),
-            estacion = estacionObj ?: Estacion("", "", "", "", ""),
+            chofer = choferObj ?: Chofer("", "", "", "", "", "", "","","",""),
+            estacion = estacionObj ?: Estacion("", "", "", "", "","",""),
             fecha = fecha.replace("-", ""),
             tipo = tipo,
             litros = if (tipo == "C") numero else 0f,
@@ -224,11 +220,14 @@ class AgregarValeActivity : AppCompatActivity() {
                 val chofer = Chofer(
                     id = parts[0].trim(),
                     codigo = parts[1].trim(),
+                    codigo_empresa = parts[2].trim(),
                     nombre = parts[3].trim(),
                     cuit = parts[4].trim(),
                     empresa = parts[5].trim(),
                     empresaCuit = parts[6].trim(),
-                    patente = parts[7].trim()
+                    patente = parts[7].trim(),
+                    telefono = parts[8].trim(),
+                    email = parts[9].trim()
                 )
                 choferes.add(chofer)
             }
@@ -264,7 +263,9 @@ class AgregarValeActivity : AppCompatActivity() {
                     codigo = parts[1].trim(),
                     nombre = parts[2].trim(),
                     direccion = parts[3].trim(),
-                    cuit = parts[4].trim()
+                    cuit = parts[4].trim(),
+                    telefono = parts[5].trim(),
+                    email = parts[6].trim()
                 )
                 estaciones.add(estacion)
             }
@@ -307,6 +308,7 @@ class AgregarValeActivity : AppCompatActivity() {
                 putExtra(Intent.EXTRA_STREAM, uri) // Archivo PDF
                 putExtra(Intent.EXTRA_TEXT, message) // Mensaje de texto
                 putExtra("jid", "$phoneNumber@s.whatsapp.net") // JID del destinatario
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
 
@@ -368,6 +370,5 @@ class AgregarValeActivity : AppCompatActivity() {
         ${if (vale.tipo == "E") "Efectivo: " + vale.efectivo else "Combustible: " + vale.litros}
         """.trimIndent().replace("\n", "\n")
     }
-
 }
 
