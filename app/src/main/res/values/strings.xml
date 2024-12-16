@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">CargaGI</string>
-    <string name="title_activity_main">CargaGI</string>
+    <string name="app_name">ValeGI</string>
+    <string name="title_activity_main">ValeGI - Gestión de Vales</string>
     <string name="title_activity_agregar_vale">Agregar vale</string>
     <string name="fecha">Fecha</string>
 

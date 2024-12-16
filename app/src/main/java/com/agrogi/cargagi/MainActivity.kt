@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 val chofer = Chofer(
                     id = parts[0].trim(),
                     codigo = parts[1].trim(),
-                    codigo_empresa = parts[2].trim(),
+                    codigoEmpresa = parts[2].trim(),
                     nombre = parts[3].trim(),
                     cuit = parts[4].trim(),
                     empresa = parts[5].trim(),

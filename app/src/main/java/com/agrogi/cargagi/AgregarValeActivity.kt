@@ -136,7 +136,7 @@ class AgregarValeActivity : AppCompatActivity() {
         setResult(RESULT_OK, intent)
         val pdfFile = createPdf(this, "vale_${nuevoVale.id}.pdf", generatePdfContent(nuevoVale))
         if (pdfFile != null) {
-            sendWhatsAppMessage(this,"542355556925", pdfFile, "Nuevo vale")
+            //sendWhatsAppMessage(this,"542355556925", pdfFile, "Nuevo vale")
             Log.d("PDF", "PDF creado correctamente en ${pdfFile.absolutePath}")
         } else {
             Toast.makeText(this, "Error al crear el PDF", Toast.LENGTH_SHORT).show()
@@ -220,7 +220,7 @@ class AgregarValeActivity : AppCompatActivity() {
                 val chofer = Chofer(
                     id = parts[0].trim(),
                     codigo = parts[1].trim(),
-                    codigo_empresa = parts[2].trim(),
+                    codigoEmpresa = parts[2].trim(),
                     nombre = parts[3].trim(),
                     cuit = parts[4].trim(),
                     empresa = parts[5].trim(),
@@ -304,7 +304,7 @@ class AgregarValeActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "application/pdf"
                 setPackage("com.whatsapp") // Asegura que use WhatsApp
-                setData(uri)
+                data = uri
                 putExtra(Intent.EXTRA_STREAM, uri) // Archivo PDF
                 putExtra(Intent.EXTRA_TEXT, message) // Mensaje de texto
                 putExtra("jid", "$phoneNumber@s.whatsapp.net") // JID del destinatario

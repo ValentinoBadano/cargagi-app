@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class Chofer(
     val id: String,
     val codigo: String,
-    val codigo_empresa: String,
+    val codigoEmpresa: String,
     val nombre: String,
     val cuit: String,
     val empresa: String,
@@ -31,6 +31,7 @@ data class Chofer(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(codigo)
+        parcel.writeString(codigoEmpresa)
         parcel.writeString(nombre)
         parcel.writeString(cuit)
         parcel.writeString(empresa)

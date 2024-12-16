@@ -22,11 +22,6 @@
         android:theme="@style/Theme.CargaGI"
         tools:targetApi="31">
         <activity
-            android:name=".ValeDetailActivity"
-            android:exported="false"
-            android:label="@string/title_activity_vale_detail"
-            android:theme="@style/Theme.CargaGI" />
-        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
