@@ -47,13 +47,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_menu)
 
         // obtenemos la ip de shared preferences
-        val sharedPreferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        serverIp = sharedPreferences.getString("server_ip", "http://10.0.2.2:5000") ?: "http://10.0.2.2:5000"
-
-        // if serverIp is null, set default value
-        if (serverIp.isEmpty()) {
-            serverIp = "http://10.0.2.2:5000"
-            }
+        serverIp = PreferencesUtil.getServerIp(this) ?: serverIp
 
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -205,7 +199,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
-                val intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, PreferencesActivity::class.java)
                 startActivity(intent)
                 true
             }

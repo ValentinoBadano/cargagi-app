@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="server_ip"
+        android:title="Dirección del Servidor"
+        android:summary="Introduce la IP del servidor"
+        android:inputType="text"
+        android:defaultValue="http://10.0.2.2:5000"/>
+
+    <EditTextPreference
+        android:key="server_port"
+        android:title="Puerto del Servidor"
+        android:summary="Introduce el puerto del servidor"
+        android:inputType="number" />
+
+    <SwitchPreferenceCompat
+        android:key="auto_sync"
+        android:title="Sincronización Automática"
+        android:summary="Activa o desactiva la sincronización automática" />
+
+    <Preference
+        android:key="about"
+        android:title="Acerca de"
+        android:summary="Información sobre la aplicación" />
+
+</PreferenceScreen>
